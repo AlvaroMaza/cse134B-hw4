@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Part 2</title>
+        <style>
+            label {
+                display: block;
+                font-family: sans-serif;
+                margin-bottom: 1em;
+            }
+        </style>
+        <script type="text/javascript" src="DOMPurify-main/dist/purify.min.js"></script>
+        <script type="module">
+            import * as module from "./customdialog.js";
+        </script>
+    </head>
+    <body>
+        <h1>Custom Dialogs</h1>
+        <button id="alert">Alert</button>
+        <button id="confirm">Confirm</button>
+        <button id="safe_prompt">Safer Prompt</button>
+        <hr></hr>
+        <output id="result"></output>
+
+        <dialog id="alert_dialog">
+            <p>Alert pressed!</p>
+            <button id="ok">Ok!</button>
+        </dialog>
+
+        <dialog id="confirm_dialog">
+            <p>Do you confirm this?</p>
+            <button id="conf_ok">Ok</button>
+            <button id="conf_cancel">Cancel</button>
+        </dialog>
+
+        <dialog id="prompt_dialog">
+            <p>Enter a prompt: </p>
+            <input id = "prompt_input"></input>
+            <button id="prompt_ok">Ok</button>
+            <button id="prompt_cancel">Cancel</button>
+        </dialog>
+    </body>
+</html>

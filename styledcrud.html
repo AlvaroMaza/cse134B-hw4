@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Alvaro Maza CRUD</title>
+    <script type="text/javascript" src="DOMPurify-main/dist/purify.min.js"></script>
+    <style>
+      html{
+        background-color: floralwhite;
+      }
+      input {
+        margin: 0.7rem;
+        padding:0.7rem;
+        background: lightgoldenrodyellow ;
+      } 
+      table {
+        width: 60%;
+        margin: 1rem;
+        border: 0.1rem solid gray;
+        border-radius: 0.5rem;
+        background-color: honeydew;
+
+      }
+      .logo{
+        height: 1.3rem; 
+        cursor: pointer;
+        margin:0.2rem;
+      }
+      label {
+          display: inline-block;
+          text-align: right;
+        }
+    </style>
+  </head>
+
+  <body>
+    <script type = "module">
+      import {app,CloseInput,OpenApp,CloseApp} from "./blogfinal.js";
+      app.FetchAll();
+      window.app = app;
+      window.OpenApp = OpenApp;
+      window.CloseApp = CloseApp;
+      window.CloseInput = CloseInput;
+    </script>
+
+    <h1>My CRUD</h1>
+    <button onclick="OpenApp()" style="cursor: pointer">&#10010;</button>
+
+    <dialog id="add">
+      <form action="javascript:void(0);" method="POST" onsubmit="app.Add()"> 
+        <label for="add-title">Title: </label>
+        <input type="text" id="add-title" placeholder="New Title: "><br>
+        <label for="add-date">Date: </label>
+        <input type="date" id="add-date" placeholder="New date: "><br>
+        <label for="add-summary">Summary: </label>
+        <input type="text" id="add-summary" placeholder="New Summary: "><br>
+        <input type="submit" value="Add" style="cursor: pointer">
+        <a class="logo" onclick="CloseApp()">&#10060;</a>
+      </form>
+    </dialog>
+
+    <dialog id="edit" >
+      <form action="javascript:void(0);" method="POST" id="saveEdit">
+        <label for="edit-title">Title: </label>
+        <input type="text" id="edit-title">
+        <label for="edit-date">Date: </label>
+        <input type="date" id="edit-date">
+        <label for="edit-summary">Summary: </label>
+        <input type="text" id="edit-summary">
+        <input type="submit" value="Edit" style="cursor: pointer"/>
+        <a class="logo" onclick="CloseInput()">&#10060;</a>
+      </form>
+    </dialog>
+
+    <table id="styled-table">
+      <tr>
+        <th>Posts</th>
+      </tr>
+        <tbody id="posts">
+        </tbody>
+    </table>
+  </body>
+</html>

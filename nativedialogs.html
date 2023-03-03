@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Part 1</title>
+        <style>
+            label {
+                display: block;
+                font-family: sans-serif;
+                margin-bottom: 1em;
+            }
+        </style>
+        <script type="text/javascript" src="DOMPurify-main/dist/purify.min.js"></script>
+    </head>
+    <body>
+        <h1>Simple Dialogs</h1>
+        <button id="alert">Alert</button>
+        <button id="confirm">Confirm</button>
+        <button id="prompt">Prompt</button>
+        <button id="safe_prompt">Safer Prompt</button>
+        <hr></hr>
+        <output id="result"></output>
+
+        <script>
+            var output = document.getElementById('result');
+
+            document.getElementById('alert').addEventListener('click', () => {
+                setTimeout(() => {
+                    alert("Hello! I am an alert box!!");
+                },0);
+            });
+
+            document.getElementById('confirm').addEventListener('click', () => {
+                output.innerHTML = '';
+                setTimeout(() => {
+                    let confirmation = confirm("Press a button!");
+                    output.innerHTML = `The value returned by the confirm method is : ${confirmation}`;
+                },0);
+            });
+
+            document.getElementById('prompt').addEventListener('click', () => {
+                output.innerHTML = '';
+                setTimeout(() => {
+                    let input = prompt('Enter some input: ');
+                    if ((input== null) || (input== '')){
+                        output.innerHTML = `User didn’t enter anything`;
+                    
+                    }
+                    else{
+                        output.innerHTML = `Prompt result: ${input}`;
+                    }
+                },0);
+            });
+
+            document.getElementById('safe_prompt').addEventListener('click', () => {
+                output.innerHTML = '';
+                setTimeout(() => {
+                    let safe_input = DOMPurify.sanitize(prompt('Enter some input: '));
+                    if (safe_input!= ''){
+                    output.innerHTML = `Prompt result: ${safe_input}`;
+                    }
+                    else{
+                        output.innerHTML = `User didn’t enter anything`;
+                    }
+                },0);
+            });
+        </script>
+    </body>
+</html>
